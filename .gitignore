@@ -1,3 +1,6 @@
+.DS_Store
+release-builds
+
 # Vim
 *.swp
 # Logs
