@@ -6,5 +6,26 @@
   </head>
   <body>
     <h1>Todos</h1>
+    <ul> </ul>
+
+    <script charset="utf-8">
+      const electron = require('electron');
+      const {ipcRenderer} = electron;
+      const ul = document.querySelector('ul');
+        console.log(ul);
+
+      // add item
+      ipcRenderer.on('item:add', function(e, item) {
+        const li = document.createElement('li');
+        const textItem = document.createTextNode(item);
+        li.appendChild(textItem);
+        ul.appendChild(li);
+      })
+
+      // clear item
+      ipcRenderer.on('item:clear', function() {
+        ul.innerHTML = '';
+      })
+    </script>
   </body>
 </html>
