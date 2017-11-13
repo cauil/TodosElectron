@@ -3,20 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Todos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   </head>
   <body>
-    <h1>Todos</h1>
+    <nav class="nav-wrapper">
+      <a class="brand-logo center">TODOs</a>
+    </nav>
     <ul> </ul>
 
     <script charset="utf-8">
       const electron = require('electron');
       const {ipcRenderer} = electron;
       const ul = document.querySelector('ul');
-        console.log(ul);
 
       // add item
       ipcRenderer.on('item:add', function(e, item) {
+        ul.className = 'collection';
         const li = document.createElement('li');
+        li.className = 'collection-item';
         const textItem = document.createTextNode(item);
         li.appendChild(textItem);
         ul.appendChild(li);
@@ -25,6 +29,14 @@
       // clear item
       ipcRenderer.on('item:clear', function() {
         ul.innerHTML = '';
+        ul.className = '';
+      })
+
+      ul.addEventListener('click', function(e) {
+        e.target.remove();
+        if(ul.children.length === 0) {
+          ul.className = '';
+        }
       })
     </script>
   </body>

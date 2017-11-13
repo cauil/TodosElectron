@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Add TODO Item</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 </head>
 <body>
+  <div class="container">
   <form accept-charset="utf-8">
     <div>
       <label>Enter Item</label>
       <input type="text" id="item" autofocus/>
     </div>
-    <button type="submit">Add Item</button>
+    <button class="btn waves-light waves-effect" type="submit">Add Item</button>
   </form>
+  </div>
   <script type="text/javascript" charset="utf-8">
     const electron = require('electron');
     const {ipcRenderer} = electron;
