@@ -16,7 +16,7 @@ npm run package-mac
 ```
 
 ## Samples
-![]('./assets/samples.png')
+![](./assets/samples.png)
 
 ## Licence
 MIT
