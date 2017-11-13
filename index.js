@@ -15,18 +15,30 @@ app.on('ready', () => {
     slashes: true
   }));
 
+  mainWindow.on('close', () => {
+    app.quit();
+  });
+
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
   Menu.setApplicationMenu(mainMenu);
 });
 
 function createAddWindow() {
-  addWindow = new BrowserWindow({});
+  addWindow = new BrowserWindow({
+    width: 300,
+    height: 200,
+    title: 'Add TODO Item'
+  });
 
   addWindow.loadURL(url.format({
     pathname: path.resolve(__dirname, 'addWindow.html'),
     protocol: 'file:',
     slashes: true
   }));
+
+  addWindow.on('closed', () => {
+    addWindow = null;
+  })
 }
 
 const mainMenuTemplate = [
